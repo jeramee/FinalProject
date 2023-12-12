@@ -1,3 +1,27 @@
+/* static/css/styles.min.css */
+
+.masthead {
+  background-image: url("static/img/image4.jpg");
+  color: rgba(9, 162, 255, 0.85);
+}
+
+.clean-block.clean-hero:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: currentColor;
+  z-index: 1;
+}
+
+@media (min-width: 576px) {
+  .clean-block.clean-hero {
+    min-height: 680px;
+  }
+}
+
 @font-face {
     font-family: Lato;
     src: url(/static/fonts/S6u8w4BMUTPHjxsAUi-qJCY.woff2?h=96ce059259499e356926c364ea1111c6) format('woff2');
