@@ -38,10 +38,11 @@ python manage.py createsuperuser
 ```
 jupyter lite serve 
 ```
-#### This will launch another webserver at http://127.0.0.1:8000/index.html
+#### This will launch another webserver at http://127.0.0.1:8000/index.html which can be safely ignored because this server only runs the Interactive Jupyter Lite Notebook which can be accessed from the parent site.
 
 You may receive error at the command prompt but the server should still work. 
-The Jupyter Lite server is prebuilt, and it is unable to delete some files upon launch.
+The Jupyter Lite server is prebuilt, and it is unable to delete some files upon 
+launch because of lack of admin priviledges.
 This saves the trouble of dealing with micropip installations.
 
 
