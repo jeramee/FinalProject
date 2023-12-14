@@ -2,17 +2,23 @@
 {% load static %}
 
 {% block content %}
+<style>
+    .blog-posts-title {
+        margin-top: 80px; /* You can adjust this value to add more or less space */
+    }
+</style>
   <section class="showcase">
     <div class="container-fluid p-0">
       <div class="row g-0">
-<div class="col-lg-6 text-white order-lg-2 showcase-img" style="background-image:url(&quot;{% static 'img/jupyter.png' %}?h=717dfd74ae2c9ffe2373428a05a3f602&quot); background-size: contain; background-repeat: no-repeat; background-position: center center;"><span></span></div>          <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+<div class="col-lg-6 text-white order-lg-2 showcase-img" style="background-image:url(&quot;{% static 'img/jupyter.png' %}?h=717dfd74ae2c9ffe2373428a05a3f602&quot); background-size: contain; background-repeat: no-repeat; background-position: center center;"><span></span></div>
+          <div class="col-lg-6 my-auto order-lg-1 showcase-text">
           <h2>Leveraging Datascience</h2>
           <p class="lead mb-0">With Jupyter Notebooks!</p>
         </div>
       </div>
       <div class="row g-0">
-        <div class="col-lg-6 text-white showcase-img" style="background-image:url(&quot;{% static 'img/pandas.png' %}?h=82f59ff9dc7ce5bb277d6dfa737a6e45&quot); background-size: contain; background-repeat: no-repeat;"><span></span></div>
-        <div class="col-lg-6 my-auto order-lg-1 showcase-text">
+          <div class="col-lg-6 text-white showcase-img" style="background-image:url(&quot;{% static 'img/pandas.png' %}?h=82f59ff9dc7ce5bb277d6dfa737a6e45&quot); background-size: 800px 390px; background-position: 50px 10px; background-repeat: no-repeat;"><span></span></div>
+          <div class="col-lg-6 my-auto order-lg-1 showcase-text">
           <h2>Dataframes with Pandas</h2>
           <p class="lead mb-0">Integrating Pandas with Jupyter Notebook and Django!</p>
         </div>
@@ -27,7 +33,7 @@
     </div>
   </section>
 
-  <h2>Blog Posts</h2>
+<h2 class="blog-posts-title">Blog Posts</h2>
   {% for post in posts %}
     <div class="post">
       <h3>{{ post.title }}</h3>

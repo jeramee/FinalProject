@@ -1,4 +1,6 @@
 # blog/views.py
+import os
+import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,9 +10,41 @@ from django.db.utils import IntegrityError
 from django.shortcuts import render, redirect
 from .forms import PostForm
 from .models import BlogPost
-import os
 from django.shortcuts import render
+from django.conf import settings
 
+# Set up logging
+LOGGING_DIR = os.path.join(settings.BASE_DIR, 'logs')
+os.makedirs(LOGGING_DIR, exist_ok=True)
+
+LOGGING_CONFIG = None
+LOGLEVEL = os.environ.get('LOGLEVEL', 'info').upper()
+LOG_FILE = os.path.join(LOGGING_DIR, 'views.log')
+
+logging.basicConfig(
+    level=LOGLEVEL,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.FileHandler(LOG_FILE),
+        logging.StreamHandler(),
+    ]
+)
+
+logger = logging.getLogger(__name__)
+
+
+def post_view(request):
+    # Assuming 'blog' is your app name
+    template_dir = os.path.join('..', 'templates', 'blog', 'posts')
+
+    # Check if the directory exists
+    if not os.path.exists(template_dir):
+        os.makedirs(template_dir)
+
+    templates = [f for f in os.listdir(template_dir) if f.endswith('.html')]
+    logger.info(f'Templates found: {templates}')
+
+    return render(request, 'blog/post.html', {'templates': templates})
 
 
 def notebook_view(request):
@@ -25,6 +59,7 @@ def notebook_view(request):
 def blog_index_view(request):
     posts = BlogPost.objects.all()
     return render(request, 'blog/index.html', {'posts': posts})
+
 
 @login_required
 def create_view(request):
@@ -72,12 +107,7 @@ def base_view(request):
 def index_view(request):
     return render(request, 'index.html')
 
-
 # Other views remain the same...
-
-
-def post(request):
-    return render(request, 'post.html', {'response': None})
 
 
 def jupyter(request):

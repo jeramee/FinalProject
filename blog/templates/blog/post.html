@@ -1,9 +1,12 @@
-<!-- page1.html -->
+<!-- post.html -->
 {% extends "base.html" %}
 
-{% block title %}Post - Blog{% endblock %}
-
 {% block content %}
-    <h2>Blog Post</h2>
-    {% include "your_template.html" %}
+    <h2>User-Created Posts</h2>
+
+    <ul>
+        {% for file_name in templates %}
+             <li><a href="{% url 'blog_post' file_name %}">{{ file_name }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
