@@ -6,7 +6,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from blog.views import (
-    base_view, index_view, post_view, jupyterlite_view, page4, page5,
+    base_view, index_view, post_view, jupyterlite_view,
     register_view, login_view, create_view, logout_view
 )
 

@@ -34,6 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'jupyter' %}">Jupyter</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'notebook_view' %}">Notebook View</a>
+            </li>
             {% block header %}
                 {% if user.is_authenticated %}
                     <li class="nav-item"><span class="nav-link">{{ user.username }}</span></li>

@@ -1,6 +1,5 @@
 # FinalProjectJO
 
-
 INF601 - Jupyter Blog
 Jeramee Oliver
 <br>Final Project
@@ -17,13 +16,13 @@ pip install -r requirements.txt
 ````
 
 ### Run
-#### This will run a server at http://127.0.0.1:8000/
+#### This will run a server at http://127.0.0.1:5000/
 
 
 ```
 python manage.py makemigrations
 python manage.py migrate
-python manage.py runserver
+python manage.py runserver 5000
 ```
 
 
@@ -39,6 +38,21 @@ python manage.py createsuperuser
 ```
 jupyter lite serve 
 ```
+
+#### Jupyter Lite does not work because of lack of SSL within micropip installation on Pyrodine
+
+Failed to get ticker 'AAPL' reason: Expecting value: line 1 column 1 (char 0)
+AAPL: No price data found, symbol may be delisted (period=10d)
+Failed to get ticker 'AAPL' reason: Expecting value: line 1 column 1 (char 0)
+AAPL: No price data found, symbol may be delisted (period=10d)
+Failed to get ticker 'AAPL' reason: Expecting value: line 1 column 1 (char 0)
+AAPL: No price data found, symbol may be delisted (period=10d)
+
+#### There is a recent release or patch to request that should solve this, but I haven't solved it yet
+
+https://github.com/koenvo/pyodide-http/tree/main
+
+#### Google Colab and Binder that allow interactive environments do not allow for embedding because of security polices.
 
 ### Location of Jupyter Notebooks:
 

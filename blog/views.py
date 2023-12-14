@@ -34,15 +34,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def notebook_view(request):
+    logger.debug('Debug message for testing logging inside of Notebook view.')
+    return render(request, 'blog/notebook_view.html')
+
+
 def jupyterlite_view(request):
-    # Link to your JupyterLite Notebook on GitHub
-    github_notebook_url = 'https://raw.githubusercontent.com/jeramee/JupyterNotebookBlogPage/main/notebooks/mini_project_1.ipynb'
+    logger.debug('Debug message for testing logging inside of Jupyter Lite view.')
+    # Link to your local JupyterLite Notebook
+    local_jupyterlite_url = 'http://127.0.0.1:8000/viewer?repo=notebooks/mini_project_1.ipynb'
 
-    # Use JupyterLite to embed the notebook
-    jupyterlite_url = f'https://jupyterlite.org/viewer?repo={github_notebook_url}'
-
-    # Pass the JupyterLite URL to the template
-    context = {'jupyterlite_url': jupyterlite_url}
+    # Pass the local JupyterLite URL to the template
+    context = {'jupyterlite_url': local_jupyterlite_url}
     return render(request, 'blog/jupyterlite_view.html', context)
 
 
@@ -58,10 +61,6 @@ def post_view(request):
     logger.info(f'Templates found: {templates}')
 
     return render(request, 'blog/post.html', {'templates': templates})
-
-
-def jupyter(request):
-    return render(request, 'jupyter.html', {'response': None})
 
 
 def blog_index_view(request):
@@ -114,16 +113,6 @@ def base_view(request):
 
 def index_view(request):
     return render(request, 'index.html')
-
-# Other views remain the same...
-
-
-def page4(request):
-    return render(request, 'page4.html', {'response': None})
-
-
-def page5(request):
-    return render(request, 'page5.html', {'response': None})
 
 
 def register_view(request):

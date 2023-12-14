@@ -2,7 +2,7 @@
 import os
 import logging
 from django.urls import path
-from .views import index_view, create_view, detail_view, post_view
+from .views import index_view, create_view, detail_view, post_view, notebook_view
 
 # Set up logging
 LOGGING_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
@@ -28,7 +28,9 @@ urlpatterns = [
     path('create/', create_view, name='blog_create'),
     path('<int:pk>/', detail_view, name='blog_detail'),
     path('post/', post_view, name='blog_post'),
+    path('notebook/', notebook_view, name='notebook_view'),
     # Add more paths for other views as needed
 ]
 
+# This message will be logged when the blog/urls.py file is loaded.
 logger.info('Blog URLs loaded successfully.')
