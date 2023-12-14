@@ -34,15 +34,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'jupyter' %}">Jupyter</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page3' %}">Page3</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page4' %}">Page4</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page5' %}">Page5</a>
-            </li>
             {% block header %}
                 {% if user.is_authenticated %}
                     <li class="nav-item"><span class="nav-link">{{ user.username }}</span></li>

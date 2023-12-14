@@ -13,6 +13,7 @@ from .models import BlogPost
 from django.shortcuts import render
 from django.conf import settings
 
+
 # Set up logging
 LOGGING_DIR = os.path.join(settings.BASE_DIR, 'logs')
 os.makedirs(LOGGING_DIR, exist_ok=True)
@@ -33,6 +34,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def jupyterlite_view(request):
+    # Link to your JupyterLite Notebook on GitHub
+    github_notebook_url = 'https://raw.githubusercontent.com/jeramee/JupyterNotebookBlogPage/main/notebooks/mini_project_1.ipynb'
+
+    # Use JupyterLite to embed the notebook
+    jupyterlite_url = f'https://jupyterlite.org/viewer?repo={github_notebook_url}'
+
+    # Pass the JupyterLite URL to the template
+    context = {'jupyterlite_url': jupyterlite_url}
+    return render(request, 'blog/jupyterlite_view.html', context)
+
+
 def post_view(request):
     # Assuming 'blog' is your app name
     template_dir = os.path.join('..', 'templates', 'blog', 'posts')
@@ -47,13 +60,8 @@ def post_view(request):
     return render(request, 'blog/post.html', {'templates': templates})
 
 
-def notebook_view(request):
-    # Link to your Jupyter Notebook on GitHub
-    github_notebook_url = 'https://github.com/jeramee/JupyterNotebookBlogPage/blob/main/notebooks/mini_project_1.ipynb'
-
-    # Pass the GitHub URL to the template
-    context = {'notebook_url': github_notebook_url}
-    return render(request, 'your_template.html', context)
+def jupyter(request):
+    return render(request, 'jupyter.html', {'response': None})
 
 
 def blog_index_view(request):
@@ -108,14 +116,6 @@ def index_view(request):
     return render(request, 'index.html')
 
 # Other views remain the same...
-
-
-def jupyter(request):
-    return render(request, 'jupyter.html', {'response': None})
-
-
-def page3(request):
-    return render(request, 'page3.html', {'response': None})
 
 
 def page4(request):
