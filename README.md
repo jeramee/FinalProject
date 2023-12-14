@@ -17,6 +17,7 @@ pip install -r requirements.txt
 ````
 
 ### Run
+#### This will run a server at http://127.0.0.1:8000/
 
 
 ```
@@ -32,8 +33,12 @@ python manage.py runserver
 python manage.py createsuperuser 
 ```
 
+### Run the Jupyter Lite Server
+#### This will launch another webserver at http://127.0.0.1:8000/index.html
 
-
+```
+jupyter lite serve 
+```
 
 ### Location of Jupyter Notebooks:
 
