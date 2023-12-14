@@ -31,3 +31,9 @@ python manage.py runserver
 ```
 python manage.py createsuperuser 
 ```
+
+### Location of Jupyter Notebooks:
+
+ https://github.com/jeramee/JupyterNotebookBlogPage/notebooks/
+
+ https://github.com/jeramee/JupyterNotebookBlogPage/notebooks/mini_project_1.ipynb

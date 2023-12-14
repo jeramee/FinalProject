@@ -25,47 +25,54 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'post' %}">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'jupyter' %}">Jupyter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'page3' %}">Page3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'page4' %}">Page4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'page5' %}">Page5</a>
+            </li>
             {% block header %}
-              <h1>{% block title %}Posts{% endblock %}</h1>
-              {% if user.is_authenticated %}
-                <li><span>{{ user.username }}</span>
-                    <a class="action" href="{% url 'blog_create' %}">New</a>
-                    <a class="action" href="{% url 'logout' %}">Log Out</a>
-              {% else %}
-                <li><a class="nav-link" href="{% url 'register' %}">Register</a>
-                <li><a class="nav-link" href="{% url 'login' %}">Log In</a>
-              {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><span class="nav-link">{{ user.username }}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog_create' %}">New</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
             {% endblock %}
-                <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-                <li><a class="nav-link" href="{% url 'page1' %}">Page1</a></li>
-                <li><a class="nav-link" href="{% url 'page2' %}">Page2</a></li>
-                <li><a class="nav-link" href="{% url 'page3' %}">Page3</a></li>
-                <li><a class="nav-link" href="{% url 'page4' %}">Page4</a></li>
-                <li><a class="nav-link" href="{% url 'page5' %}">Page5</a></li>
         </ul>
     </div>
 </nav>
 <header class="text-center text-white masthead" style="background: linear-gradient(rgba(0, 0, 120, 0.8), rgba(0, 0, 80, 0.6)), url('{% static 'img/image4.jpg' %}') rgba(60, 0, 80, 0.3) no-repeat center center;background-size: cover; z-index: 0;">
-    <h1 class="mb-5">Technical Blog</h1>
+    <h1 class="mb-5">{% block dynamic_title %}Technical Blog{% endblock %}</h1>
+    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+        <form class="signup-form">
+            <div class="row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                    <input class="form-control form-control-lg" type="email" placeholder="Enter your email...">
+                </div>
+                <div class="col-12 col-md-3">
+                </div>
             </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
-                <form class="signup-form">
-                    <div class="row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0">
-                            <input class="form-control form-control-lg" type="email" placeholder="Enter your email...">
-                        </div>
-                        <div class="col-12 col-md-3">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
     {% for message in messages %}
         <div class="flash">{{ message }}</div>
     {% endfor %}
     {% block content %}{% endblock %}
-</section>
 </header>
 
 <!-- Bootstrap JavaScript Libraries -->

@@ -9,6 +9,18 @@ from django.shortcuts import render, redirect
 from .forms import PostForm
 from .models import BlogPost
 import os
+from django.shortcuts import render
+
+
+
+def notebook_view(request):
+    # Link to your Jupyter Notebook on GitHub
+    github_notebook_url = 'https://github.com/jeramee/JupyterNotebookBlogPage/blob/main/notebooks/mini_project_1.ipynb'
+
+    # Pass the GitHub URL to the template
+    context = {'notebook_url': github_notebook_url}
+    return render(request, 'your_template.html', context)
+
 
 def blog_index_view(request):
     posts = BlogPost.objects.all()
@@ -64,12 +76,12 @@ def index_view(request):
 # Other views remain the same...
 
 
-def page1(request):
-    return render(request, 'page1.html', {'response': None})
+def post(request):
+    return render(request, 'post.html', {'response': None})
 
 
-def page2(request):
-    return render(request, 'page2.html', {'response': None})
+def jupyter(request):
+    return render(request, 'jupyter.html', {'response': None})
 
 
 def page3(request):
