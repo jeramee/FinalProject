@@ -15,15 +15,14 @@ A small personal blog that includes jupyter functionality. This project is a pra
 pip install -r requirements.txt
 ````
 
-### Run
-#### This will run a server at http://127.0.0.1:5000/
-
+### Run the following series of commands:
 
 ```
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 5000
 ```
+#### This will run a server at http://127.0.0.1:5000/
 
 
 ### Create the administrator login for the project
@@ -33,11 +32,18 @@ python manage.py createsuperuser
 ```
 
 ### Run the Jupyter Lite Server
-#### This will launch another webserver at http://127.0.0.1:8000/index.html
+
+#### Open up another terminal and type in the following command:
 
 ```
 jupyter lite serve 
 ```
+#### This will launch another webserver at http://127.0.0.1:8000/index.html
+
+You may receive error at the command prompt but the server should still work. 
+The Jupyter Lite server is prebuilt, and it is unable to delete some files upon launch.
+This saves the trouble of dealing with micropip installations.
+
 
 #### Jupyter Lite does not work because of lack of SSL within micropip installation on Pyrodine
 
